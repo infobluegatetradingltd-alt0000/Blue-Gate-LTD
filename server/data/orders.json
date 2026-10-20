@@ -1,0 +1,40 @@
+[
+  {
+    "orderId": "BGT-2026-31294",
+    "createdAt": "2026-10-20T16:08:45.978Z",
+    "customer": {
+      "firstName": "David",
+      "lastName": "Clarke",
+      "email": "david.clarke@example.co.uk",
+      "phone": "+44 7476 623907",
+      "addressLine1": "Office 760, 85 Dunstall Hill",
+      "city": "Wolverhampton",
+      "postcode": "WV6 0SR",
+      "country": "United Kingdom",
+      "marketingConsent": false
+    },
+    "items": [
+      {
+        "unitPrice": 79.99,
+        "title": "BlueGate AcousticPro ANC",
+        "quantity": 1,
+        "id": "bgt-anc-900"
+      }
+    ],
+    "summary": {
+      "subtotal": 79.99,
+      "discountAmount": 8,
+      "shippingFee": 0,
+      "total": 71.99,
+      "estimatedVat": 12
+    },
+    "shippingOption": {
+      "name": "Royal Mail 48 Tracked",
+      "price": 0
+    },
+    "paymentMethod": "sandbox_simulated",
+    "paymentStatus": "paid_sandbox",
+    "fulfillmentStatus": "processing",
+    "trackingNumber": "GB942737983RM"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "ticketId": "TKT-52088",
+    "createdAt": "2026-10-20T16:09:05.323Z",
+    "name": "Sarah Jenkins",
+    "email": "sarah.j@example.co.uk",
+    "topic": "order_tracking",
+    "orderRef": "BGT-2026-31294",
+    "message": "Can you please confirm the tracking status for my recent delivery?",
+    "status": "open"
+  }
+]
