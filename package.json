@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "node server/index.js",
+    "start": "node server/index.js",
     "build": "tsc -b && vite build",
+    "test": "node --test tests/ecommerce.test.js",
     "lint": "oxlint",
     "preview": "vite preview"
   },
