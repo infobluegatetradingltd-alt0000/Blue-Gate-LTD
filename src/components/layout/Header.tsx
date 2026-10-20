@@ -72,12 +72,12 @@ export const Header: React.FC<HeaderProps> = ({
               className="group flex items-center gap-2 outline-none focus-visible:ring-2 focus-visible:ring-[#1769D2] rounded-lg"
               aria-label="BlueGate Trading Home"
             >
-              {/* High-res transparent vector logo */}
+              {/* High-res transparent owner logo */}
               <div className="h-10 sm:h-12 flex items-center">
                 <img
-                  src="./images/bluegate-logo.svg"
+                  src="./images/bluegate-logo.png"
                   alt="BlueGate Trading Ltd - Smart Finds. Better Everyday Shopping."
-                  className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                  className="h-8 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </div>
             </a>

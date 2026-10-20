@@ -79,9 +79,9 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="./images/bluegate-logo-white.svg"
+                src="./images/bluegate-logo-white.png"
                 alt="BlueGate Trading"
-                className="h-9 w-auto object-contain"
+                className="h-8 w-auto object-contain"
               />
             </div>
             <p className="text-xs text-slate-300 leading-relaxed max-w-sm mb-4">
