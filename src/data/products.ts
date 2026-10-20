@@ -8,7 +8,7 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     description: 'Engineered for seamless daily connectivity, gaming precision, and acoustic clarity.',
     iconName: 'Headphones',
     productCount: 8,
-    featuredImage: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
     subcategories: ['Audio & Headphones', 'Power & Chargers', 'Smartwatches', 'Peripherals & Gaming', 'Webcams & Display']
   },
   {
@@ -18,7 +18,7 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     description: 'High-grade educational kits, mechanical puzzles, and RC vehicles built to inspire curiosity.',
     iconName: 'Gamepad2',
     productCount: 6,
-    featuredImage: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
     subcategories: ['STEM & Robotics', 'Building & Construction', 'Mechanical Puzzles', 'Classic Strategy', 'RC & Stunt']
   },
   {
@@ -28,7 +28,7 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     description: 'Thoughtfully designed minimalist essentials that elevate work surfaces and daily living.',
     iconName: 'Home',
     productCount: 5,
-    featuredImage: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&auto=format&fit=crop&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
     subcategories: ['Desk & Workspace', 'Modern Lighting', 'Smart Gadgets', 'Kitchen Precision', 'Organization']
   },
   {
@@ -38,7 +38,7 @@ export const CATEGORIES_DATA: CategoryInfo[] = [
     description: 'Engineered utility for daily transit, commuters, and minimalist travellers.',
     iconName: 'Compass',
     productCount: 4,
-    featuredImage: 'https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&auto=format&fit=crop&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1627123424574-724758594e93?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
     subcategories: ['Minimalist Wallets', 'Thermal Drinkware', 'Tech Travel Cases', 'Everyday Carry']
   }
 ];
@@ -65,9 +65,9 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-AUD-9001',
     images: [
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Hybrid 3-stage active noise cancellation with 40mm beryllium drivers and 42-hour continuous battery life.',
     description: 'The AcousticPro brings studio-grade fidelity to everyday UK commuting. Featuring dual feedforward and feedback microphones for -38dB ambient reduction, plush memory-foam ear cushions wrapped in breathable protein leather, and ultra-low latency multipoint Bluetooth 5.3 connection.',
@@ -133,8 +133,8 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-GME-8002',
     images: [
-      'https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Zero-drift electromagnetic Hall Effect sticks, dual haptic rumble motors, and 1,000Hz polling rate for PC and consoles.',
     description: 'Engineered for competitive esports accuracy. Hall Effect sensors eliminate potentiometer stick-drift entirely. Includes tactile mechanical microswitch face buttons and 4 programmable rear remappable macro paddles.',
@@ -187,8 +187,8 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-WTC-5003',
     images: [
-      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Ultra-crisp 466x466 AMOLED screen with continuous heart rate, SpO2, sleep tracking, and 5ATM water resistance.',
     description: 'A refined daily companion built with aircraft-grade aluminum alloy bezel and sapphire-coated glass. Delivers up to 14 days of typical use on a single magnetic charge and supports over 100 indoor and outdoor sports modes.',
@@ -240,8 +240,8 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-AUD-4004',
     images: [
-      'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Dual passive radiators producing room-filling 20W stereo sound with 16-hour playtime and True Wireless Stereo pairing.',
     description: 'Submersible up to 1 meter for 30 minutes, SoundSphere is built for gardens, beach days, and shower acoustics. Connect two units wirelessly for true left/right channel stereo separation.',
@@ -294,8 +294,8 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-PER-7005',
     images: [
-      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Gasket-mounted hot-swappable mechanical switches with pre-lubed stabilizers, PBT double-shot keycaps, and rotary media knob.',
     description: 'Designed for discerning typists and UK developers. Featuring five layers of sound-dampening foam for an acoustically deep, creamy typing sound profile. Tri-mode connectivity supports 2.4GHz, Bluetooth 5.0 (3 devices), and Type-C wired.',
@@ -350,8 +350,8 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-PWR-6006',
     images: [
-      'https://images.unsplash.com/photo-1609592426508-cc037b545fec?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1609592426508-cc037b545fec?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'High-density lithium polymer battery with 65W USB-C Power Delivery capable of charging MacBooks, laptops, tablets, and phones.',
     description: 'Equipped with an intelligent digital smart status LED display showing real-time voltage, wattage, and remaining battery percentage. Airline approved (74Wh capacity).',
@@ -401,8 +401,8 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-PER-3007',
     images: [
-      'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: '90% silent micro-switches with contoured natural palm rest, 4,000 DPI optical sensor, and rechargeable USB-C battery.',
     description: 'Designed for quiet library study, open-plan offices, and home studios. Effortlessly toggle between 3 connected devices at the click of a button.',
@@ -453,7 +453,7 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-CAM-6508',
     images: [
-      'https://images.unsplash.com/photo-1588508065123-287b28e013da?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1588508065123-287b28e013da?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Sony STARVIS sensor with AI auto-framing, dual stereo noise-cancelling microphones, and physical privacy lens slider.',
     description: 'Elevate Zoom, Microsoft Teams, and streaming broadcasts. Superb low-light dynamic range balances skin tones under harsh fluorescent or window lighting.',
@@ -495,8 +495,8 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-TOY-1011',
     images: [
-      'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Hands-on robotics engineering kit with ultrasonic obstacle avoidance, line tracking, and Scratch/Python block coding.',
     description: 'Build confidence in robotics and computer science. Children construct the motorized explorer from modular snap-fit components, then code real autonomous behaviors through an intuitive tablet/phone app or PC software.',
@@ -546,8 +546,8 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-TOY-1022',
     images: [
-      'https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1560969184-10fe8719e047?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Precision engineered architectural micro-bricks recreating iconic global bridge and skyscraper landmarks in stunning detail.',
     description: 'A rewarding tactile challenge for older kids, teens, and adult builders. Compatible with all major construction block standards, featuring custom illuminated LED light strip bricks.',
@@ -589,7 +589,7 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-TOY-1033',
     images: [
-      'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Spiral vortexes, centrifugal funnels, and motorized marble lift elevator with 30 glass marbles.',
     description: 'Watch physics and kinetic potential energy in action. Crystal-clear interlocking tubes let children track the marbles through every loop, drops, and hairpin curve.',
@@ -630,7 +630,7 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-TOY-1044',
     images: [
-      'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Dual high-speed 380 brushed motors, independent oil-filled suspension, and anti-skid TPR all-terrain tyres.',
     description: 'Tackles gravel, grass, pavement, and dirt ramps effortlessly. Features proportional steering control for precise navigation and includes dual rechargeable modular battery packs for 40+ minutes of total driving time.',
@@ -672,7 +672,7 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-TOY-1055',
     images: [
-      'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Carved solid walnut and maple folding board with weighted magnetic pieces and velvet storage interior.',
     description: 'A classic 2-in-1 heirloom set featuring Staunton chess pieces on one side and a backgammon arena on the interior. Magnetic bases prevent accidental piece displacement while playing at home or travelling.',
@@ -715,8 +715,8 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-HOM-2011',
     images: [
-      'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Architect-grade anodized aluminum arm with 5 color temperatures, stepless touch dimming, and 10W wireless charging pad.',
     description: 'Eliminate screen glare and eye fatigue. Honeycomb light diffusion panel produces flicker-free, RG0 blue-light certified illumination. The weighted base integrates a fast 10W Qi induction pad for charging smartphones.',
@@ -755,7 +755,7 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-HOM-2022',
     images: [
-      'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Handcrafted ribbed matte ceramic cover with whisper-quiet 24dB ultrasonic atomization and ambient candlelight warm glow.',
     description: 'Transform bedrooms and home offices into tranquil sanctuaries. Operates continuously for up to 10 hours on a single fill with automated safety auto-shutoff when the water chamber empties.',
@@ -796,7 +796,7 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-HOM-2033',
     images: [
-      'https://images.unsplash.com/photo-1544816155-12df9643f363?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1544816155-12df9643f363?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Brushed 304 food-grade stainless steel platform with high-precision strain gauge sensors and built-in brew timer.',
     description: 'Perfect for espresso brewing, culinary baking, and meal prep portion control. High-contrast reverse-backlit LCD screen displays measurements clearly in grams, ounces, milliliters, and pounds.',
@@ -836,7 +836,7 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-HOM-2044',
     images: [
-      'https://images.unsplash.com/photo-1541140532154-b024d705b909?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1541140532154-b024d705b909?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Weighted steel core wrapped in non-scratch eco-friendly silicone with strong traceless 3M adhesive base.',
     description: 'Keep your charging cables, HDMI cords, and mouse lines neatly anchored at the edge of your desk. Prevents dropped cables behind furniture.',
@@ -876,8 +876,8 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-LIF-3011',
     images: [
-      'https://images.unsplash.com/photo-1627123424574-724758594e93?w=900&auto=format&fit=crop&q=85',
-      'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1627123424574-724758594e93?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85',
+      'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Quick-access pop-up card mechanism with aerospace anodized 6061-T6 aluminum shielding and spring-steel cash clip.',
     description: 'Slender front-pocket profile holds up to 6 credit cards in the shielded chamber plus banknotes and ID cards under the exterior carbon-fiber money clip. Patented trigger fans cards in an ergonomic cascading array.',
@@ -926,7 +926,7 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-LIF-3022',
     images: [
-      'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Double-wall copper vacuum insulation keeping drinks icy cold for 24 hours or piping hot for 12 hours. 100% leakproof lid.',
     description: 'Crafted from food-grade 18/8 pro-grade stainless steel that preserves pure flavor without metallic aftertaste. Powder-coated sweat-free matte finish fits all standard UK vehicle cup holders.',
@@ -976,7 +976,7 @@ export const PRODUCTS_DATA: Product[] = [
     inStock: true,
     sku: 'BGT-LIF-3033',
     images: [
-      'https://images.unsplash.com/photo-1544816155-12df9643f363?w=900&auto=format&fit=crop&q=85'
+      'https://images.unsplash.com/photo-1544816155-12df9643f363?w=1080&h=1080&fit=crop&crop=center&auto=format&q=85'
     ],
     shortDescription: 'Shockproof water-repellent EVA outer shell with custom elastic organizer loops and dual zippered mesh compartments.',
     description: 'Consolidate all chargers, power banks, SSD hard drives, earbuds, stylus pens, and SD memory cards in one organized, drop-resistant travel pouch. Slips easily into backpacks and carry-on luggage.',

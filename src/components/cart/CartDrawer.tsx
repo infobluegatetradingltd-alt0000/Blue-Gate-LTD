@@ -113,12 +113,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 key={item.id}
                 className="flex items-start gap-3.5 p-3 rounded-2xl bg-[#F8F9FA] border border-slate-200/80"
               >
-                {/* Thumb */}
-                <div className="w-16 h-16 rounded-xl bg-white p-1.5 shrink-0 border border-slate-200 overflow-hidden flex items-center justify-center">
+                {/* Thumb (1:1 Square Frame) */}
+                <div className="w-16 h-16 rounded-xl bg-slate-100 shrink-0 border border-slate-200 overflow-hidden flex items-center justify-center">
                   <img
                     src={item.product.images[0]}
                     alt={item.product.title}
-                    className="w-full h-full object-contain mix-blend-multiply"
+                    width={1080}
+                    height={1080}
+                    className="w-full h-full object-cover"
                   />
                 </div>
 

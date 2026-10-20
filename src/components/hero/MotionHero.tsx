@@ -510,13 +510,15 @@ export const MotionHero: React.FC<MotionHeroProps> = ({
                   sfx.playPop();
                   onSelectProduct(activeProduct);
                 }}
-                className="relative aspect-square w-full rounded-2xl bg-[#F5F5F2] overflow-hidden flex items-center justify-center p-4 mb-5 border border-slate-100 group/stage"
+                className="relative aspect-square w-full rounded-2xl bg-slate-100/80 overflow-hidden flex items-center justify-center mb-5 border border-slate-200/70 group/stage"
               >
                 <img
                   key={activeProduct.id}
                   src={activeProduct.images[0]}
                   alt={activeProduct.title}
-                  className="w-full h-full object-contain mix-blend-multiply transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/stage:scale-105"
+                  width={1080}
+                  height={1080}
+                  className="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/stage:scale-105"
                   loading="eager"
                 />
 

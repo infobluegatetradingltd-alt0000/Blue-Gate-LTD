@@ -54,15 +54,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
         </button>
       </div>
 
-      {/* Product Image Stage */}
+      {/* Product Image Stage (Strict 1080x1080 1:1 Square Frame) */}
       <div
         onClick={() => onSelect(product)}
-        className="relative aspect-square w-full rounded-xl bg-[#F8F9FA] overflow-hidden cursor-pointer mb-4 p-4 flex items-center justify-center border border-slate-100 group/image"
+        className="relative aspect-square w-full rounded-xl bg-slate-100/80 overflow-hidden cursor-pointer mb-4 flex items-center justify-center border border-slate-200/70 group/image"
       >
         <img
           src={product.images[0]}
           alt={product.title}
-          className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover/image:scale-105"
+          width={1080}
+          height={1080}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover/image:scale-105"
           loading="lazy"
         />
 

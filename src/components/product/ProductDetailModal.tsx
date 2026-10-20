@@ -114,12 +114,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             {/* Left Image Gallery (5 cols) */}
             <div className="md:col-span-6 space-y-4">
-              {/* Main Stage */}
-              <div className="relative aspect-square w-full rounded-2xl bg-[#F8F9FA] p-6 flex items-center justify-center border border-slate-100 overflow-hidden">
+              {/* Main Stage (Strict 1080x1080 1:1 Square Frame) */}
+              <div className="relative aspect-square w-full rounded-2xl bg-slate-100/80 flex items-center justify-center border border-slate-200/70 overflow-hidden">
                 <img
                   src={product.images[activeImageIndex] || product.images[0]}
                   alt={`${product.title} view ${activeImageIndex + 1}`}
-                  className="w-full h-full object-contain mix-blend-multiply"
+                  width={1080}
+                  height={1080}
+                  className="w-full h-full object-cover"
                 />
                 {product.badge && (
                   <span className="absolute top-4 left-4 text-xs font-bold px-3 py-1 rounded-full bg-[#1769D2] text-white shadow-sm">
@@ -135,13 +137,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <button
                       key={idx}
                       onClick={() => setActiveImageIndex(idx)}
-                      className={`relative w-16 h-16 rounded-xl bg-slate-50 p-1 border transition-all ${
+                      className={`relative aspect-square w-16 h-16 rounded-xl bg-slate-100 overflow-hidden border transition-all ${
                         activeImageIndex === idx
                           ? 'border-[#1769D2] ring-2 ring-[#1769D2]/20'
                           : 'border-slate-200 opacity-70 hover:opacity-100'
                       }`}
                     >
-                      <img src={img} alt="" className="w-full h-full object-contain mix-blend-multiply" />
+                      <img src={img} alt="" width={1080} height={1080} className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>
@@ -405,8 +407,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     onClick={() => onSelectRelated(rel)}
                     className="p-3 rounded-xl border border-slate-200 hover:border-[#1769D2] cursor-pointer transition-all bg-white hover:shadow-sm flex items-center gap-3"
                   >
-                    <div className="w-12 h-12 rounded-lg bg-[#F8F9FA] overflow-hidden shrink-0 p-1">
-                      <img src={rel.images[0]} alt={rel.title} className="w-full h-full object-contain mix-blend-multiply" />
+                    <div className="w-12 h-12 rounded-lg bg-slate-100 overflow-hidden shrink-0 border border-slate-200/80">
+                      <img src={rel.images[0]} alt={rel.title} width={1080} height={1080} className="w-full h-full object-cover" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-xs font-bold text-slate-800 truncate">{rel.title}</p>

@@ -80,12 +80,14 @@ export const EditorialFeature: React.FC<EditorialFeatureProps> = ({
             <div className="lg:col-span-6">
               <div
                 onClick={() => onSelectProduct(flagshipProduct)}
-                className="relative aspect-4/3 sm:aspect-square w-full rounded-2xl bg-white p-8 flex items-center justify-center border border-[#E3E5E7] shadow-apple-md cursor-pointer group"
+                className="relative aspect-square w-full rounded-2xl bg-slate-100/80 overflow-hidden flex items-center justify-center border border-[#E3E5E7] shadow-apple-md cursor-pointer group"
               >
                 <img
                   src={flagshipProduct.images[0]}
                   alt="BlueGate AcousticPro Headphones"
-                  className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                  width={1080}
+                  height={1080}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
 
                 <div className="absolute top-4 right-4 bg-[#FFF0A8] text-[#202329] text-xs font-extrabold px-3 py-1 rounded-full border border-[#F5D64E]">
