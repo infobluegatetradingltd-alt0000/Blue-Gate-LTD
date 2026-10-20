@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, Cpu, BatteryCharging, Headphones, Volume2 } from 'lucide-react';
 import { Product } from '../../types/product';
 import { useCart } from '../../context/CartContext';
+import { ProductStudioImage } from '../product/ProductStudioImage';
 
 interface EditorialFeatureProps {
   flagshipProduct: Product;
@@ -76,32 +77,16 @@ export const EditorialFeature: React.FC<EditorialFeatureProps> = ({
               </div>
             </div>
 
-            {/* Right Stage (6 cols) */}
+            {/* Right Stage (6 cols) with Strict 1080x1080 Studio Presentation */}
             <div className="lg:col-span-6">
-              <div
-                onClick={() => onSelectProduct(flagshipProduct)}
-                className="relative aspect-square w-full rounded-2xl bg-slate-100/80 overflow-hidden flex items-center justify-center border border-[#E3E5E7] shadow-apple-md cursor-pointer group"
-              >
-                <img
-                  src={flagshipProduct.images[0]}
-                  alt="BlueGate AcousticPro Headphones"
-                  width={1080}
-                  height={1080}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-
-                <div className="absolute top-4 right-4 bg-[#FFF0A8] text-[#202329] text-xs font-extrabold px-3 py-1 rounded-full border border-[#F5D64E]">
-                  Save £30.00
-                </div>
-
-                <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-3 rounded-xl border border-slate-200 flex items-center justify-between text-xs">
-                  <div>
-                    <p className="font-bold text-slate-800">BlueGate AcousticPro</p>
-                    <p className="text-slate-500">Royal Mail 48 Tracked (FREE)</p>
-                  </div>
-                  <span className="font-mono font-bold text-[#1769D2]">SKU: {flagshipProduct.sku}</span>
-                </div>
-              </div>
+              <ProductStudioImage
+                src={flagshipProduct.images[0]}
+                alt="BlueGate AcousticPro Headphones"
+                badge="Flagship Acoustic"
+                discountPercent={27}
+                onQuickView={() => onSelectProduct(flagshipProduct)}
+                priority
+              />
             </div>
           </div>
         </div>
@@ -109,3 +94,4 @@ export const EditorialFeature: React.FC<EditorialFeatureProps> = ({
     </section>
   );
 };
+

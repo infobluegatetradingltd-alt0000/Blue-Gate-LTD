@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Tag, ShoppingBag } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Tag, ShoppingBag, Check, Lock, Sparkles } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { ProductStudioImage } from '../product/ProductStudioImage';
 
 interface CartDrawerProps {
   onProceedToCheckout: () => void;
@@ -27,10 +28,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   if (!isCartOpen) return null;
 
-  const handleApplyPromo = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!promoInput.trim()) return;
-    const res = applyPromoCode(promoInput);
+  const handleApplyPromo = (code: string) => {
+    const res = applyPromoCode(code);
     setPromoMessage({ text: res.message, isError: !res.success });
     if (res.success) setPromoInput('');
   };
@@ -62,7 +61,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           <button
             onClick={closeCart}
             aria-label="Close cart"
-            className="p-1.5 text-slate-400 hover:text-slate-800 rounded-lg hover:bg-slate-200/60"
+            className="p-1.5 text-slate-400 hover:text-slate-800 rounded-lg hover:bg-slate-200/60 transition-colors"
           >
             <X size={20} />
           </button>
@@ -76,11 +75,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 ? '🎉 You have qualified for FREE Tracked UK Delivery!'
                 : `Add £${summary.amountNeededForFreeShipping.toFixed(2)} more for FREE UK Delivery`}
             </span>
-            <span>{freeShippingProgress}%</span>
+            <span className="font-mono">{freeShippingProgress}%</span>
           </div>
           <div className="w-full h-2 bg-[#D0E2FA] rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#1769D2] rounded-full transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-[#1769D2] to-[#38BDF8] rounded-full transition-all duration-500 ease-out"
               style={{ width: `${freeShippingProgress}%` }}
             />
           </div>
@@ -111,16 +110,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             items.map(item => (
               <div
                 key={item.id}
-                className="flex items-start gap-3.5 p-3 rounded-2xl bg-[#F8F9FA] border border-slate-200/80"
+                className="flex items-start gap-3.5 p-3 rounded-2xl bg-[#F8F9FA] border border-slate-200/80 group hover:border-[#1769D2]/30 transition-all"
               >
-                {/* Thumb (1:1 Square Frame) */}
-                <div className="w-16 h-16 rounded-xl bg-slate-100 shrink-0 border border-slate-200 overflow-hidden flex items-center justify-center">
-                  <img
+                {/* 1080x1080 Thumb Frame */}
+                <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0 border border-slate-200">
+                  <ProductStudioImage
                     src={item.product.images[0]}
                     alt={item.product.title}
-                    width={1080}
-                    height={1080}
-                    className="w-full h-full object-cover"
                   />
                 </div>
 
@@ -141,89 +137,108 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between mt-2">
-                    {/* Qty Selector */}
-                    <div className="flex items-center border border-slate-200 rounded-lg bg-white">
+                  <div className="flex items-baseline gap-2 mt-1">
+                    <span className="text-xs font-extrabold text-[#1769D2] font-mono">
+                      £{item.unitPrice.toFixed(2)}
+                    </span>
+                    <span className="text-[11px] text-slate-400">× {item.quantity}</span>
+                  </div>
+
+                  {/* Stepper & Remove */}
+                  <div className="flex items-center justify-between mt-2.5 pt-2 border-t border-slate-200/60">
+                    <div className="flex items-center border border-slate-200 rounded-lg bg-white p-0.5">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
                         aria-label="Decrease quantity"
-                        className="p-1 text-slate-500 hover:text-slate-800"
+                        className="p-1 text-slate-500 hover:text-slate-800 rounded hover:bg-slate-100"
                       >
                         <Minus size={12} />
                       </button>
-                      <span className="w-7 text-center text-xs font-bold text-slate-800 tabular-nums">
+                      <span className="px-2 text-xs font-bold text-slate-800 font-mono">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
                         aria-label="Increase quantity"
-                        className="p-1 text-slate-500 hover:text-slate-800"
+                        className="p-1 text-slate-500 hover:text-slate-800 rounded hover:bg-slate-100"
                       >
                         <Plus size={12} />
                       </button>
                     </div>
 
-                    {/* Price */}
-                    <div className="text-right">
-                      <span className="text-sm font-bold text-[#1769D2]">
-                        £{item.lineTotal.toFixed(2)}
-                      </span>
-                      {item.quantity > 1 && (
-                        <span className="block text-[10px] text-slate-400">
-                          (£{item.unitPrice.toFixed(2)} ea)
-                        </span>
-                      )}
-                    </div>
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      aria-label="Remove item"
+                      className="p-1 text-slate-400 hover:text-rose-500 rounded transition-colors"
+                    >
+                      <Trash2 size={14} />
+                    </button>
                   </div>
                 </div>
-
-                {/* Delete button */}
-                <button
-                  onClick={() => removeFromCart(item.id)}
-                  aria-label="Remove item"
-                  className="p-1 text-slate-400 hover:text-rose-500 transition-colors rounded"
-                >
-                  <Trash2 size={15} />
-                </button>
               </div>
             ))
           )}
         </div>
 
-        {/* Drawer Footer with Calculations */}
+        {/* Drawer Footer (Summary & Checkout) */}
         {items.length > 0 && (
-          <div className="p-4 sm:p-5 border-t border-slate-200 bg-[#F8F9FA] space-y-3.5">
-            {/* Promo Code Input */}
-            <div>
-              <form onSubmit={handleApplyPromo} className="flex gap-2">
+          <div className="p-4 sm:p-5 border-t border-slate-100 bg-[#F8F9FA] space-y-4">
+            {/* Promo Code Input & Quick-Chips */}
+            <div className="space-y-2">
+              <form onSubmit={e => { e.preventDefault(); handleApplyPromo(promoInput); }} className="flex gap-2">
                 <div className="relative flex-1">
                   <Tag size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                   <input
                     type="text"
                     value={promoInput}
-                    onChange={e => setPromoInput(e.target.value)}
-                    placeholder="Discount code (e.g. BLUEGATE10)"
-                    className="w-full pl-8 pr-3 py-2 text-xs uppercase font-medium bg-white border border-slate-200 rounded-xl outline-none focus:border-[#1769D2]"
+                    onChange={e => setPromoInput(e.target.value.toUpperCase())}
+                    placeholder="Enter voucher code"
+                    className="w-full pl-8 pr-3 py-2 text-xs uppercase font-mono font-semibold bg-white border border-slate-200 rounded-xl outline-none focus:border-[#1769D2]"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="px-3.5 py-2 bg-[#202329] hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition-colors"
+                  className="px-4 py-2 bg-slate-800 hover:bg-[#1769D2] text-white text-xs font-bold rounded-xl transition-colors shrink-0"
                 >
                   Apply
                 </button>
               </form>
+
+              {/* Quick Clickable Voucher Chips */}
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-[10px] text-slate-400 font-medium">Quick tap:</span>
+                <button
+                  type="button"
+                  onClick={() => handleApplyPromo('BLUEGATE10')}
+                  className="text-[10px] font-bold px-2 py-0.5 bg-[#FFF0A8] text-[#202329] border border-[#F5D64E] rounded-md hover:bg-[#F5D64E] transition-colors"
+                >
+                  BLUEGATE10 (10% Off)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleApplyPromo('WELCOME5')}
+                  className="text-[10px] font-bold px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md hover:bg-emerald-100 transition-colors"
+                >
+                  WELCOME5 (£5 Off)
+                </button>
+              </div>
+
               {promoMessage && (
-                <p className={`text-[11px] mt-1.5 ${promoMessage.isError ? 'text-rose-600' : 'text-emerald-600'}`}>
+                <p className={`text-xs ${promoMessage.isError ? 'text-rose-600' : 'text-emerald-600 font-semibold'}`}>
                   {promoMessage.text}
                 </p>
               )}
+
+              {/* Applied Promo Code */}
               {summary.appliedPromo && (
-                <div className="flex items-center justify-between text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1.5 rounded-lg border border-emerald-200 mt-2">
-                  <span>Applied: {summary.appliedPromo.code}</span>
+                <div className="flex items-center justify-between p-2 rounded-lg bg-emerald-50 text-emerald-800 text-xs border border-emerald-200">
+                  <div className="flex items-center gap-1.5">
+                    <Check size={14} />
+                    <span>Code <strong>{summary.appliedPromo.code}</strong> applied</span>
+                  </div>
                   <button
                     onClick={removePromoCode}
-                    className="text-emerald-700 hover:text-rose-600 font-bold ml-2 underline text-[11px]"
+                    className="text-xs text-rose-600 hover:underline font-semibold"
                   >
                     Remove
                   </button>
@@ -232,52 +247,58 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             </div>
 
             {/* Calculations Breakdown */}
-            <div className="space-y-1.5 text-xs text-slate-600 pt-1 border-t border-slate-200">
+            <div className="space-y-1.5 text-xs text-slate-600 pt-2 border-t border-slate-200/60">
               <div className="flex justify-between">
-                <span>Bag Subtotal</span>
-                <span className="font-semibold text-slate-800">£{summary.subtotal.toFixed(2)}</span>
+                <span>Subtotal</span>
+                <span className="font-mono font-bold text-slate-800">£{summary.subtotal.toFixed(2)}</span>
               </div>
+
               {summary.discountAmount > 0 && (
-                <div className="flex justify-between text-emerald-600 font-medium">
-                  <span>Discount</span>
-                  <span>-£{summary.discountAmount.toFixed(2)}</span>
+                <div className="flex justify-between text-emerald-600 font-semibold">
+                  <span>Discount ({summary.appliedPromo?.code})</span>
+                  <span className="font-mono">-£{summary.discountAmount.toFixed(2)}</span>
                 </div>
               )}
+
               <div className="flex justify-between">
-                <span>UK Tracked Shipping</span>
-                <span className="font-semibold text-slate-800">
-                  {summary.isFreeShipping ? (
-                    <span className="text-emerald-600 font-bold uppercase text-[11px]">Free</span>
+                <span>Tracked UK Shipping</span>
+                <span className="font-mono font-bold text-slate-800">
+                  {summary.shippingFee === 0 ? (
+                    <span className="text-emerald-600">FREE</span>
                   ) : (
                     `£${summary.shippingFee.toFixed(2)}`
                   )}
                 </span>
               </div>
-              <div className="flex justify-between text-slate-400 text-[11px]">
-                <span>Estimated UK VAT (20% included)</span>
-                <span>£{summary.estimatedVat.toFixed(2)}</span>
+
+              <div className="flex justify-between text-[11px] text-slate-400">
+                <span>Estimated 20% UK VAT (Included)</span>
+                <span className="font-mono">£{summary.estimatedVat.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between text-sm sm:text-base font-extrabold text-[#202329] pt-2 border-t border-slate-200">
-                <span>Total</span>
-                <span className="text-[#1769D2]">£{summary.total.toFixed(2)}</span>
+
+              <div className="flex justify-between text-base font-extrabold text-[#202329] pt-2 border-t border-slate-200">
+                <span>Total Amount</span>
+                <span className="text-[#1769D2] font-mono">£{summary.total.toFixed(2)}</span>
               </div>
             </div>
 
-            {/* Checkout Action Button */}
+            {/* Checkout CTA */}
             <button
               onClick={() => {
                 closeCart();
                 onProceedToCheckout();
               }}
-              className="w-full py-3.5 px-4 bg-[#1769D2] hover:bg-[#1256B0] text-white text-sm font-bold rounded-xl shadow-apple-md hover:shadow-apple-hover transition-all flex items-center justify-center gap-2 group"
+              className="w-full py-3.5 bg-[#1769D2] hover:bg-[#1256B0] text-white text-xs font-bold rounded-xl shadow-apple-md hover:shadow-apple-hover transition-all flex items-center justify-center gap-2 group"
             >
-              <span>Proceed to Checkout</span>
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <Lock size={14} />
+              <span>Proceed to Secure Checkout • £{summary.total.toFixed(2)}</span>
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </button>
 
-            <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
-              <ShieldCheck size={13} className="text-emerald-500" />
-              <span>PCI-DSS Compliant 256-bit Encrypted Checkout</span>
+            {/* Trust Seal */}
+            <div className="flex items-center justify-center gap-2 text-[10px] text-slate-400">
+              <ShieldCheck size={13} className="text-[#1769D2]" />
+              <span>256-Bit SSL Encryption • Official UK Merchant No. 16997836</span>
             </div>
           </div>
         )}

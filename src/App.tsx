@@ -16,9 +16,11 @@ import { DealsSection } from './components/home/DealsSection';
 import { BenefitsRow } from './components/home/BenefitsRow';
 import { ShoppingGuides } from './components/home/ShoppingGuides';
 import { NewsletterSection } from './components/home/NewsletterSection';
+import { RecentlyViewed } from './components/home/RecentlyViewed';
 import { ProductCard } from './components/product/ProductCard';
 import { ProductDetailModal } from './components/product/ProductDetailModal';
 import { CartDrawer } from './components/cart/CartDrawer';
+import { WishlistDrawer } from './components/wishlist/WishlistDrawer';
 import { CheckoutModal } from './components/checkout/CheckoutModal';
 import { PolicyModal, PolicyType } from './components/modals/PolicyModal';
 import { ContactModal } from './components/modals/ContactModal';
@@ -28,18 +30,21 @@ import { Toast } from './components/ui/Toast';
 import { ProductFilters, FilterState } from './components/product/ProductFilters';
 import { PRODUCTS_DATA, CATEGORIES_DATA } from './data/products';
 import { Product, ProductCategory } from './types/product';
-import { ArrowLeft, SlidersHorizontal, PackageX, Sparkles, Check } from 'lucide-react';
+import { ArrowLeft, SlidersHorizontal, PackageX, Sparkles, LayoutGrid, LayoutList } from 'lucide-react';
 
 export function App() {
   // Navigation & View State
   const [activeCategory, setActiveCategory] = useState<ProductCategory | 'all' | 'deals' | 'bestsellers'>('all');
   const [isBrowsingCatalogue, setIsBrowsingCatalogue] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [catalogueLayout, setCatalogueLayout] = useState<'grid' | 'list'>('grid');
 
   // Modals state
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
+  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [activePolicy, setActivePolicy] = useState<PolicyType | null>(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -163,13 +168,15 @@ export function App() {
             {/* 1. Announcement Strip */}
             <AnnouncementBar />
 
-            {/* 2. Sticky Header */}
+            {/* 2. Sticky Header with Mega Menu & Wishlist Trigger */}
             <Header
               activeCategory={activeCategory}
               onSelectCategory={handleSelectCategory}
               onOpenSearch={() => setIsSearchOpen(true)}
               onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
               onOpenContact={() => setIsContactOpen(true)}
+              onOpenWishlist={() => setIsWishlistOpen(true)}
+              onOpenTracking={() => setIsTrackingOpen(true)}
             />
 
             {/* Main Content Area */}
@@ -177,7 +184,7 @@ export function App() {
               {!isBrowsingCatalogue ? (
                 /* ================= FULL HOMEPAGE FLOW ================= */
                 <>
-                  {/* 3. Outstanding Motion-Led Hero */}
+                  {/* 3. Outstanding Motion-Led Hero with Claude-Motion */}
                   <MotionHero
                     onShopBestSellers={() => {
                       setFilters(prev => ({ ...prev, category: 'bestsellers' }));
@@ -199,7 +206,7 @@ export function App() {
                     />
                   </div>
 
-                  {/* 5. Featured Products & Top Picks */}
+                  {/* 5. Featured Products & Top Picks (Strict 1080x1080 Frames) */}
                   <FeaturedSection
                     products={PRODUCTS_DATA}
                     onSelectProduct={p => setSelectedProduct(p)}
@@ -275,23 +282,54 @@ export function App() {
                         </p>
                       </div>
 
-                      {/* Sort Dropdown */}
-                      <div className="flex items-center gap-2 self-start sm:self-auto">
-                        <label htmlFor="sort-select" className="text-xs font-bold text-slate-600 whitespace-nowrap">
-                          Sort by:
-                        </label>
-                        <select
-                          id="sort-select"
-                          value={filters.sortBy}
-                          onChange={e => setFilters({ ...filters, sortBy: e.target.value as any })}
-                          className="px-3.5 py-2 text-xs font-semibold bg-white border border-[#E3E5E7] rounded-xl outline-none shadow-sm focus:border-[#1769D2]"
-                        >
-                          <option value="featured">Featured Picks</option>
-                          <option value="price-asc">Price: Low to High</option>
-                          <option value="price-desc">Price: High to Low</option>
-                          <option value="rating">Highest Rated</option>
-                          <option value="newest">Newest Arrivals</option>
-                        </select>
+                      {/* Toolbar: Layout Switcher & Sort Dropdown */}
+                      <div className="flex items-center gap-2.5 self-start sm:self-auto">
+                        {/* Grid / List Switcher */}
+                        <div className="hidden sm:flex items-center border border-slate-200 rounded-xl bg-white p-0.5 shadow-sm">
+                          <button
+                            onClick={() => setCatalogueLayout('grid')}
+                            title="Grid View (1080x1080)"
+                            aria-label="Grid view"
+                            className={`p-2 rounded-lg transition-colors ${
+                              catalogueLayout === 'grid'
+                                ? 'bg-[#1769D2] text-white shadow-sm'
+                                : 'text-slate-400 hover:text-slate-700'
+                            }`}
+                          >
+                            <LayoutGrid size={15} />
+                          </button>
+                          <button
+                            onClick={() => setCatalogueLayout('list')}
+                            title="List View"
+                            aria-label="List view"
+                            className={`p-2 rounded-lg transition-colors ${
+                              catalogueLayout === 'list'
+                                ? 'bg-[#1769D2] text-white shadow-sm'
+                                : 'text-slate-400 hover:text-slate-700'
+                            }`}
+                          >
+                            <LayoutList size={15} />
+                          </button>
+                        </div>
+
+                        {/* Sort Dropdown */}
+                        <div className="flex items-center gap-2">
+                          <label htmlFor="sort-select" className="text-xs font-bold text-slate-600 whitespace-nowrap">
+                            Sort by:
+                          </label>
+                          <select
+                            id="sort-select"
+                            value={filters.sortBy}
+                            onChange={e => setFilters({ ...filters, sortBy: e.target.value as any })}
+                            className="px-3.5 py-2 text-xs font-semibold bg-white border border-[#E3E5E7] rounded-xl outline-none shadow-sm focus:border-[#1769D2]"
+                          >
+                            <option value="featured">Featured Picks</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="newest">Newest Arrivals</option>
+                          </select>
+                        </div>
 
                         {/* Mobile Filter Trigger */}
                         <button
@@ -318,15 +356,22 @@ export function App() {
                       />
                     </div>
 
-                    {/* Products Grid / Empty State (3 cols) */}
+                    {/* Products Grid / Empty State */}
                     <div className="lg:col-span-3">
                       {filteredProducts.length > 0 ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                        <div
+                          className={
+                            catalogueLayout === 'grid'
+                              ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6'
+                              : 'space-y-4'
+                          }
+                        >
                           {filteredProducts.map(product => (
                             <ProductCard
                               key={product.id}
                               product={product}
                               onSelect={p => setSelectedProduct(p)}
+                              layout={catalogueLayout}
                             />
                           ))}
                         </div>
@@ -353,7 +398,13 @@ export function App() {
               )}
             </main>
 
-            {/* 12. Full Comprehensive Footer */}
+            {/* 12. Recently Viewed Products (Amazon / Luxury Store Feature) */}
+            <RecentlyViewed
+              onSelectProduct={p => setSelectedProduct(p)}
+              currentProductId={selectedProduct?.id}
+            />
+
+            {/* 13. Full Comprehensive Statutory Footer */}
             <Footer
               onSelectCategory={cat => handleSelectCategory(cat)}
               onOpenPolicy={type => setActivePolicy(type)}
@@ -364,6 +415,17 @@ export function App() {
             {/* Slide-out Cart Drawer */}
             <CartDrawer
               onProceedToCheckout={() => setIsCheckoutOpen(true)}
+              onExploreProducts={() => {
+                setIsBrowsingCatalogue(true);
+                setActiveCategory('all');
+              }}
+            />
+
+            {/* Slide-out Wishlist Drawer */}
+            <WishlistDrawer
+              isOpen={isWishlistOpen}
+              onClose={() => setIsWishlistOpen(false)}
+              onSelectProduct={p => setSelectedProduct(p)}
               onExploreProducts={() => {
                 setIsBrowsingCatalogue(true);
                 setActiveCategory('all');
@@ -394,6 +456,8 @@ export function App() {
               onSelectCategory={cat => handleSelectCategory(cat)}
               onOpenPolicy={type => setActivePolicy(type)}
               onOpenContact={() => setIsContactOpen(true)}
+              onOpenWishlist={() => setIsWishlistOpen(true)}
+              onOpenTracking={() => setIsTrackingOpen(true)}
             />
 
             {/* Multi-Step Checkout Modal */}
@@ -402,7 +466,7 @@ export function App() {
               onClose={() => setIsCheckoutOpen(false)}
             />
 
-            {/* Policies Modal */}
+            {/* Statutory Policies Modal */}
             <PolicyModal
               policyType={activePolicy}
               onClose={() => setActivePolicy(null)}
