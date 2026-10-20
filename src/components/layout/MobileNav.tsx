@@ -46,7 +46,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
         <div className="p-4 border-b border-slate-100 flex items-center justify-between">
           <div className="h-8">
             <img
-              src="/images/bluegate-logo.jpg"
+              src="./images/bluegate-logo.svg"
               alt="BlueGate Trading"
               className="h-7 w-auto object-contain"
             />
